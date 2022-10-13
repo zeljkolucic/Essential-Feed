@@ -51,10 +51,10 @@ public final class RemoteFeedLoader {
 
 private class FeedItemsMapper {
     private struct Root: Decodable {
-        let items: [Item]
+        let items: [RemoteFeedItem]
     }
 
-    private struct Item: Decodable {
+    private struct RemoteFeedItem: Decodable {
         let id: UUID
         let description: String?
         let location: String?
