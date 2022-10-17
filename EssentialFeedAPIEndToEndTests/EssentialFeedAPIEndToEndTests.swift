@@ -39,7 +39,7 @@ final class EssentialFeedAPIEndToEndTests: XCTestCase {
             expectation.fulfill()
         }
         
-        wait(for: [expectation], timeout: 5.0)
+        wait(for: [expectation], timeout: 7.0)
         return receivedResult
     }
 
