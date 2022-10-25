@@ -17,12 +17,14 @@ class LocalFeedLoader {
         self.currentDate = currentDate
     }
     
-    func save(_ items: [FeedItem]) {
+    func save(_ items: [FeedItem], completion: @escaping (Error?) -> Void) {
         store.deleteCachedFeed { [weak self] error in
             guard let self = self else { return }
             
             if error == nil {
                 self.store.insert(items, timestamp: self.currentDate())
+            } else {
+                completion(error)
             }
         }
     }
@@ -70,7 +72,7 @@ class CacheFeedUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT()
         let items = [uniqueItem()]
         
-        sut.save(items)
+        sut.save(items) { _ in }
         
         XCTAssertEqual(store.receivedMessages, [.deleteCachedFeed])
     }
@@ -80,7 +82,7 @@ class CacheFeedUseCaseTests: XCTestCase {
         let items = [uniqueItem()]
         let deletionError = anyNSError()
         
-        sut.save(items)
+        sut.save(items) { _ in }
         store.completeDeletion(with: deletionError)
         
         XCTAssertEqual(store.receivedMessages, [.deleteCachedFeed])
@@ -91,10 +93,30 @@ class CacheFeedUseCaseTests: XCTestCase {
         let (sut, store) = makeSUT(currentDate: { timestamp })
         let items = [uniqueItem()]
         
-        sut.save(items)
+        sut.save(items) { _ in }
         store.completeDeletionSuccessfully()
         
         XCTAssertEqual(store.receivedMessages, [.deleteCachedFeed, .insert(items, timestamp)])
+    }
+    
+    func test_save_failsOnDeletionError() {
+        let (sut, store) = makeSUT()
+        let items = [uniqueItem()]
+        let deletionError = anyNSError()
+        
+        let expectation = expectation(description: "Wait for completion...")
+        
+        var receivedError: NSError?
+        sut.save(items) { error in
+            receivedError = error as? NSError
+            expectation.fulfill()
+        }
+        
+        store.completeDeletion(with: deletionError)
+        wait(for: [expectation], timeout: 1.0)
+        
+        XCTAssertEqual(receivedError?.code, deletionError.code)
+        XCTAssertEqual(receivedError?.domain, deletionError.domain)
     }
     
     // MARK: - Helpers
