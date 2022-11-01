@@ -7,7 +7,9 @@
 
 import Foundation
 
-protocol FeedLoader {
-    associatedtype Error: Swift.Error
-    func load(completion: @escaping (Result<[FeedImage], Error>) -> Void)
+public protocol FeedLoader {
+//    associatedtype Error: Swift.Error
+    typealias Result = Swift.Result<[FeedImage], Error>
+    
+    func load(completion: @escaping (Result) -> Void)
 }

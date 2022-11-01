@@ -16,12 +16,14 @@ public final class RemoteFeedLoader: FeedLoader {
         case invalidData
     }
     
+    public typealias Result = FeedLoader.Result
+    
     public init(url: URL, client: HTTPClient) {
         self.url = url
         self.client = client
     }
     
-    public func load(completion: @escaping (Result<[FeedImage], Error>) -> Void) {
+    public func load(completion: @escaping (Result) -> Void) {
         client.get(from: url) { [weak self] result in
             guard self != nil else { return }
             
@@ -30,17 +32,17 @@ public final class RemoteFeedLoader: FeedLoader {
                 completion(RemoteFeedLoader.map(data, from: response))
                 
             case .failure:
-                completion(.failure(.connectivity))
+                completion(.failure(Error.connectivity))
             }
         }
     }
     
-    private static func map(_ data: Data, from response: HTTPURLResponse) -> Result<[FeedImage], Error> {
+    private static func map(_ data: Data, from response: HTTPURLResponse) -> Result {
         do {
             let items = try FeedItemsMapper.map(data, from: response)
             return .success(items.toModels())
         } catch {
-            return .failure(.invalidData)
+            return .failure(Error.invalidData)
         }
     }
 }
