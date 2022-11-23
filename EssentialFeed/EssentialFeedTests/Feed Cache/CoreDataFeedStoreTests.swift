@@ -65,7 +65,8 @@ class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     // MARK: - Helpers
     
     func makeSUT() -> FeedStore {
-        let sut = CoreDataFeedStore()
+        let storeBundle = Bundle(for: CoreDataFeedStore.self)
+        let sut = try! CoreDataFeedStore(bundle: storeBundle)
         return sut
     }
     
