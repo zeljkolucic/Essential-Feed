@@ -57,6 +57,10 @@ extension FeedViewController {
         return dataSource?.tableView(tableView, cellForRowAt: indexPath)
     }
     
+    var errorMessage: String? {
+        return errorView.message
+    }
+    
     private var feedImagesSection: Int {
         return 0
     }
