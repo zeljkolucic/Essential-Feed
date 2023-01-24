@@ -17,7 +17,7 @@
                BlueprintIdentifier = "E4868D5728F83C0900BAC699"
                BuildableName = "EssentialFeed.framework"
                BlueprintName = "EssentialFeed"
-               ReferencedContainer = "container:EssentialFeed.xcodeproj">
+               ReferencedContainer = "container:../EssentialFeed/EssentialFeed.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,14 +35,21 @@
             BlueprintIdentifier = "E4BAB78729110353006E9772"
             BuildableName = "EssentialFeediOS.framework"
             BlueprintName = "EssentialFeediOS"
-            ReferencedContainer = "container:EssentialFeed.xcodeproj">
+            ReferencedContainer = "container:../EssentialFeed/EssentialFeed.xcodeproj">
          </BuildableReference>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E4868D5728F83C0900BAC699"
             BuildableName = "EssentialFeed.framework"
             BlueprintName = "EssentialFeed"
-            ReferencedContainer = "container:EssentialFeed.xcodeproj">
+            ReferencedContainer = "container:../EssentialFeed/EssentialFeed.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E4061402298087620047F2EA"
+            BuildableName = "EssentialApp.app"
+            BlueprintName = "EssentialApp"
+            ReferencedContainer = "container:EssentialApp.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
@@ -54,7 +61,7 @@
                BlueprintIdentifier = "E4868D8928FDD43B00BAC699"
                BuildableName = "EssentialFeedAPIEndToEndTests.xctest"
                BlueprintName = "EssentialFeedAPIEndToEndTests"
-               ReferencedContainer = "container:EssentialFeed.xcodeproj">
+               ReferencedContainer = "container:../EssentialFeed/EssentialFeed.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -65,7 +72,7 @@
                BlueprintIdentifier = "E4868D5F28F83C0900BAC699"
                BuildableName = "EssentialFeedTests.xctest"
                BlueprintName = "EssentialFeedTests"
-               ReferencedContainer = "container:EssentialFeed.xcodeproj">
+               ReferencedContainer = "container:../EssentialFeed/EssentialFeed.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -76,7 +83,29 @@
                BlueprintIdentifier = "E4BAB78E29110353006E9772"
                BuildableName = "EssentialFeediOSTests.xctest"
                BlueprintName = "EssentialFeediOSTests"
-               ReferencedContainer = "container:EssentialFeed.xcodeproj">
+               ReferencedContainer = "container:../EssentialFeed/EssentialFeed.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E4061418298087640047F2EA"
+               BuildableName = "EssentialAppTests.xctest"
+               BlueprintName = "EssentialAppTests"
+               ReferencedContainer = "container:EssentialApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E40DBF14292FD300002870D5"
+               BuildableName = "EssentialFeedCacheIntegrationTests.xctest"
+               BlueprintName = "EssentialFeedCacheIntegrationTests"
+               ReferencedContainer = "container:../EssentialFeed/EssentialFeed.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -104,7 +133,7 @@
             BlueprintIdentifier = "E4868D5728F83C0900BAC699"
             BuildableName = "EssentialFeed.framework"
             BlueprintName = "EssentialFeed"
-            ReferencedContainer = "container:EssentialFeed.xcodeproj">
+            ReferencedContainer = "container:../EssentialFeed/EssentialFeed.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
