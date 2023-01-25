@@ -21,12 +21,18 @@ public class FeedLoaderCacheDecorator: FeedLoader {
         decoratee.load { [weak self] result in
             switch result {
             case let .success(feed):
-                self?.cache.save(feed) { _ in }
+                self?.cache.saveIgnoringResult(feed)
                 completion(.success(feed))
                 
             case let .failure(error):
                 completion(.failure(error))
             }
         }
+    }
+}
+
+private extension FeedCache {
+    func saveIgnoringResult(_ feed: [FeedImage]) {
+        save(feed) { _ in }
     }
 }
