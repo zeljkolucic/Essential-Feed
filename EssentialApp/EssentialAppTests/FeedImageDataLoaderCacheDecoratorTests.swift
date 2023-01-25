@@ -22,7 +22,7 @@ class FeedImageDataLoaderCacheDecorator: FeedImageDataLoader {
     }
     
     func loadImageData(from url: URL, completion: @escaping (FeedImageDataLoader.Result) -> Void) -> FeedImageDataLoaderTask {
-        return Task()
+        return decoratee.loadImageData(from: url, completion: completion)
     }
 }
 
@@ -32,6 +32,15 @@ class FeedImageDataLoaderCacheDecoratorTests: XCTestCase {
         let (_, loader) = makeSUT()
         
         XCTAssertTrue(loader.loadedURLs.isEmpty, "Expected no loaded URLs")
+    }
+    
+    func test_loadImageData_loadsFromLoader() {
+        let url = anyURL()
+        let (sut, loader) = makeSUT()
+        
+        _ = sut.loadImageData(from: url) { _ in }
+            
+        XCTAssertEqual(loader.loadedURLs, [url])
     }
     
     // MARK: - Helpers
