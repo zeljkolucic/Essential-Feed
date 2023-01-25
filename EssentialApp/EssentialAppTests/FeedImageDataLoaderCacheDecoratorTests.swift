@@ -29,13 +29,20 @@ class FeedImageDataLoaderCacheDecorator: FeedImageDataLoader {
 class FeedImageDataLoaderCacheDecoratorTests: XCTestCase {
     
     func test_init_doesNotLoadImageData() {
-        let loader = LoaderSpy()
-        _ = FeedImageDataLoaderCacheDecorator(decoratee: loader)
+        let (_, loader) = makeSUT()
         
         XCTAssertTrue(loader.loadedURLs.isEmpty, "Expected no loaded URLs")
     }
     
     // MARK: - Helpers
+    
+    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedImageDataLoaderCacheDecorator, loader: LoaderSpy) {
+        let loader = LoaderSpy()
+        let sut = FeedImageDataLoaderCacheDecorator(decoratee: loader)
+        trackForMemoryLeaks(loader)
+        trackForMemoryLeaks(sut)
+        return (sut, loader)
+    }
     
     private class LoaderSpy: FeedImageDataLoader {
         private var messages = [(url: URL, completion: (FeedImageDataLoader.Result) -> Void)]()
