@@ -63,6 +63,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func sceneWillResignActive(_ scene: UIScene) {
+        validateCache()
+    }
+    
+    func validateCache() {
         localFeedLoader.validateCache { _ in }
     }
 }

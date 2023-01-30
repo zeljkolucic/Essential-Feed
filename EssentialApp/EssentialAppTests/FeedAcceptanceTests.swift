@@ -71,7 +71,7 @@ class FeedAcceptanceTests: XCTestCase {
     
     private func enterBackground(with store: InMemoryFeedStore) {
         let sut = SceneDelegate(httpClient: HTTPClientStub.offline, store: store)
-        sut.sceneWillResignActive(UIApplication.shared.connectedScenes.first!)
+        sut.validateCache()
     }
     
     private func response(for url: URL) -> (Data, HTTPURLResponse) {
