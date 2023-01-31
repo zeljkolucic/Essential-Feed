@@ -82,7 +82,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location, Location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gd-uQ-JTW">
                                                             <rect key="frame" x="16" y="0.0" width="337" height="36"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -96,7 +96,7 @@
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qNE-Sc-aeb">
                                                             <rect key="frame" x="0.0" y="0.0" width="353" height="353"/>
-                                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="tintColor" systemColor="systemBackgroundColor"/>
                                                             <state key="normal" title="Button"/>
                                                             <buttonConfiguration key="configuration" style="plain" image="arrow.clockwise" catalog="system"/>
                                                             <connections>
@@ -104,7 +104,7 @@
                                                             </connections>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="KYQ-K0-D3j" secondAttribute="bottom" id="06W-u4-Mbj"/>
                                                         <constraint firstItem="qNE-Sc-aeb" firstAttribute="leading" secondItem="f8y-WP-XGZ" secondAttribute="leading" id="2cS-Bj-kYW"/>
@@ -126,7 +126,7 @@
                                                     <rect key="frame" x="0.0" y="409" width="349" height="51"/>
                                                     <string key="text">Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description Description </string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -179,6 +179,12 @@
     <resources>
         <image name="arrow.clockwise" catalog="system" width="113" height="128"/>
         <image name="mappin" catalog="system" width="106" height="128"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
