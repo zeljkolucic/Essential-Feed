@@ -20,11 +20,17 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     private var tableModel = [FeedImageCellController]() {
         didSet { tableView.reloadData() }
     }
-
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         
         refresh()
+    }
+    
+    public override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        tableView.sizeTableHeaderToFit()
     }
     
     @IBAction private func refresh() {

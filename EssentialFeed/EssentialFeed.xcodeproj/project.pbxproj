@@ -87,6 +87,7 @@
 		E4BAB7AB2911A0A4006E9772 /* FeedImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BAB7AA2911A0A4006E9772 /* FeedImageCell.swift */; };
 		E4F920ED2988F01900CCEBE7 /* FeedSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F920EC2988F01900CCEBE7 /* FeedSnapshotTests.swift */; };
 		E4F920EF2988F3CB00CCEBE7 /* UIImage+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F920EE2988F3CB00CCEBE7 /* UIImage+TestHelpers.swift */; };
+		E4F920F22988F48300CCEBE7 /* UITableView+HeaderSizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F920F12988F48300CCEBE7 /* UITableView+HeaderSizing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -219,6 +220,7 @@
 		E4BAB7AA2911A0A4006E9772 /* FeedImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCell.swift; sourceTree = "<group>"; };
 		E4F920EC2988F01900CCEBE7 /* FeedSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSnapshotTests.swift; sourceTree = "<group>"; };
 		E4F920EE2988F3CB00CCEBE7 /* UIImage+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+TestHelpers.swift"; sourceTree = "<group>"; };
+		E4F920F12988F48300CCEBE7 /* UITableView+HeaderSizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+HeaderSizing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +280,7 @@
 				E493B39D2917C7DE00A73DF4 /* UIView+Shimmering.swift */,
 				E43F448C291BAB100003D691 /* UITableView+Dequeueing.swift */,
 				E43F448E291BAC0B0003D691 /* UIImageView+Animations.swift */,
+				E4F920F12988F48300CCEBE7 /* UITableView+HeaderSizing.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -902,6 +905,7 @@
 			files = (
 				E40613AF297F18160047F2EA /* ErrorView.swift in Sources */,
 				E493B39E2917C7DE00A73DF4 /* UIView+Shimmering.swift in Sources */,
+				E4F920F22988F48300CCEBE7 /* UITableView+HeaderSizing.swift in Sources */,
 				E43F448D291BAB100003D691 /* UITableView+Dequeueing.swift in Sources */,
 				E4BAB7A9291170B0006E9772 /* FeedViewController.swift in Sources */,
 				E4BAB7AB2911A0A4006E9772 /* FeedImageCell.swift in Sources */,
