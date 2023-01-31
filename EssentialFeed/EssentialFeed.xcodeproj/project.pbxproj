@@ -88,6 +88,7 @@
 		E4F920ED2988F01900CCEBE7 /* FeedSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F920EC2988F01900CCEBE7 /* FeedSnapshotTests.swift */; };
 		E4F920EF2988F3CB00CCEBE7 /* UIImage+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F920EE2988F3CB00CCEBE7 /* UIImage+TestHelpers.swift */; };
 		E4F920F22988F48300CCEBE7 /* UITableView+HeaderSizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F920F12988F48300CCEBE7 /* UITableView+HeaderSizing.swift */; };
+		E4F920F42988FB7B00CCEBE7 /* UIViewController+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F920F32988FB7B00CCEBE7 /* UIViewController+Snapshot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -221,6 +222,7 @@
 		E4F920EC2988F01900CCEBE7 /* FeedSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedSnapshotTests.swift; sourceTree = "<group>"; };
 		E4F920EE2988F3CB00CCEBE7 /* UIImage+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+TestHelpers.swift"; sourceTree = "<group>"; };
 		E4F920F12988F48300CCEBE7 /* UITableView+HeaderSizing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+HeaderSizing.swift"; sourceTree = "<group>"; };
+		E4F920F32988FB7B00CCEBE7 /* UIViewController+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Snapshot.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -568,6 +570,7 @@
 			isa = PBXGroup;
 			children = (
 				E4F920EE2988F3CB00CCEBE7 /* UIImage+TestHelpers.swift */,
+				E4F920F32988FB7B00CCEBE7 /* UIViewController+Snapshot.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -920,6 +923,7 @@
 			files = (
 				E4BAB7A729116828006E9772 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				E4F920ED2988F01900CCEBE7 /* FeedSnapshotTests.swift in Sources */,
+				E4F920F42988FB7B00CCEBE7 /* UIViewController+Snapshot.swift in Sources */,
 				E4F920EF2988F3CB00CCEBE7 /* UIImage+TestHelpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
