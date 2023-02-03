@@ -12,42 +12,42 @@ class LoadImageCommentsFromRemoteUseCase: XCTestCase {
     
     func test_init_doesNotRequestDataFromURL() {
         let (_, client) = makeSUT()
-        
+
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
-    
+
     func test_load_requestsDataFromURL() {
         let url = URL(string: "https://a-given-url.com")!
         let (sut, client) = makeSUT(url: url)
-        
+
         sut.load() { _ in }
-        
+
         XCTAssertEqual(client.requestedURLs, [url])
     }
-    
+
     func test_loadTwice_requestsDataFromURL() {
         let url = URL(string: "https://a-given-url.com")!
         let (sut, client) = makeSUT(url: url)
-        
+
         sut.load() { _ in }
         sut.load() { _ in }
-        
+
         XCTAssertEqual(client.requestedURLs, [url, url])
     }
-    
+
     func test_load_deliversErrorOnClientError() {
         let (sut, client) = makeSUT()
-        
+
         expect(sut, toCompleteWith: .failure(RemoteImageCommentsLoader.Error.connectivity)) {
             let clientError = NSError(domain: "Test", code: 0)
             client.complete(with: clientError)
         }
     }
-    
-    func test_load_deliversErrorOnNon200HTTPResponse() {
+
+    func test_load_deliversErrorOnNon2xxHTTPResponse() {
         let (sut, client) = makeSUT()
-        
-        let samples = [199, 201, 300, 400, 500].enumerated()
+
+        let samples = [199, 150, 300, 400, 500].enumerated()
         samples.forEach { index, code in
             expect(sut, toCompleteWith: .failure(RemoteImageCommentsLoader.Error.invalidData)) {
                 let json = makeItemsJSON([])
@@ -55,26 +55,32 @@ class LoadImageCommentsFromRemoteUseCase: XCTestCase {
             }
         }
     }
-    
-    func test_load_deliversErrorOn200HTTPResponseWithInvalidJSON() {
+
+    func test_load_deliversErrorOn2xxHTTPResponseWithInvalidJSON() {
         let (sut, client) = makeSUT()
-        
-        expect(sut, toCompleteWith: .failure(RemoteImageCommentsLoader.Error.invalidData)) {
-            let invalidJSON = Data("invalid json".utf8)
-            client.complete(withStatusCode: 200, data: invalidJSON)
+
+        let samples = [200, 201, 250, 280, 299]
+        samples.enumerated().forEach { index, code in
+            expect(sut, toCompleteWith: .failure(RemoteImageCommentsLoader.Error.invalidData)) {
+                let invalidJSON = Data("invalid json".utf8)
+                client.complete(withStatusCode: code, data: invalidJSON, at: index)
+            }
         }
     }
     
-    func test_load_deliversNoItemsOn200HTTPResponseWithEmptyJSONList() {
+    func test_load_deliversNoItemsOn2xxHTTPResponseWithEmptyJSONList() {
         let (sut, client) = makeSUT()
         
-        expect(sut, toCompleteWith: .success([])) {
-            let emptyListJSON = makeItemsJSON([])
-            client.complete(withStatusCode: 200, data: emptyListJSON)
+        let samples = [200, 201, 250, 280, 299]
+        samples.enumerated().forEach { index, code in
+            expect(sut, toCompleteWith: .success([])) {
+                let emptyListJSON = makeItemsJSON([])
+                client.complete(withStatusCode: code, data: emptyListJSON, at: index)
+            }
         }
     }
     
-    func test_load_deliversItemsOn200HTTPResponseWithJSONItems() {
+    func test_load_deliversItemsOn2xxHTTPResponseWithJSONItems() {
         let (sut, client) = makeSUT()
         
         let item1 = makeItem(
@@ -91,9 +97,13 @@ class LoadImageCommentsFromRemoteUseCase: XCTestCase {
         
         let items = [item1.model, item2.model]
         
-        expect(sut, toCompleteWith: .success(items)) {
-            let json = makeItemsJSON([item1.json, item2.json])
-            client.complete(withStatusCode: 200, data: json)
+        let samples = [200, 201, 250, 280, 299]
+        
+        samples.enumerated().forEach { index, code in
+            expect(sut, toCompleteWith: .success(items)) {
+                let json = makeItemsJSON([item1.json, item2.json])
+                client.complete(withStatusCode: 200, data: json, at: index)
+            }
         }
     }
     
