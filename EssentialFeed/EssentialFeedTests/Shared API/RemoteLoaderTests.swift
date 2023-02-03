@@ -49,7 +49,7 @@ class RemoteLoaderTests: XCTestCase {
             throw anyNSError()
         })
         
-        expect(sut, toCompleteWith: .failure(.invalidData)) {
+        expect(sut, toCompleteWith: .failure(RemoteLoader<String>.Error.invalidData)) {
             client.complete(withStatusCode: 200, data: anyData())
         }
     }
@@ -124,7 +124,7 @@ class RemoteLoaderTests: XCTestCase {
             case let (.success(receivedItems), .success(expectedItems)):
                 XCTAssertEqual(receivedItems, expectedItems, file: file, line: line)
                 
-            case let (.failure(receivedError), .failure(expectedError)):
+            case let (.failure(receivedError as RemoteLoader<String>.Error), .failure(expectedError as RemoteLoader<String>.Error)):
                 XCTAssertEqual(receivedError, expectedError, file: file, line: line)
                 
             default:
