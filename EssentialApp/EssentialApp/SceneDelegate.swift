@@ -52,17 +52,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func sceneWillResignActive(_ scene: UIScene) {
-        validateCache()
-    }
-    
-    func validateCache() {
         localFeedLoader.validateCache { _ in }
     }
     
     private func makeRemoteFeedLoaderWithLocalFallback() -> AnyPublisher<[FeedImage], Error> {
         let remoteURL = URL(string: "https://ile-api.essentialdeveloper.com/essential-feed/v1/feed")!
         
-        let remoteFeedLoader = RemoteFeedLoader(url: remoteURL, client: httpClient)
+        let remoteFeedLoader = RemoteLoader(url: remoteURL, client: httpClient, mapper: FeedItemsMapper.map)
         
         return remoteFeedLoader
             .loadPublisher()
@@ -85,3 +81,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 }
 
 extension RemoteLoader: FeedLoader where Resource == [FeedImage] {}
+
