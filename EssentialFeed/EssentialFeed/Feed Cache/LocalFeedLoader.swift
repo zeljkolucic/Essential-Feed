@@ -42,7 +42,7 @@ extension LocalFeedLoader: FeedCache {
     }
 }
 
-extension LocalFeedLoader: FeedLoader {
+extension LocalFeedLoader {
     public typealias LoadResult = Result<[FeedImage], Error>
     
     public func load(completion: @escaping (LoadResult) -> Void) {
