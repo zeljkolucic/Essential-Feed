@@ -40,8 +40,10 @@ class LoadResourcePresenterTests: XCTestCase {
         ])
     }
     
-    func test_didFinishLoadingWithError_displaysLocalizedErrorViewAndStopsLoading() {
-        let (sut, view) = makeSUT()
+    func test_didFinishLoadingWithMapperError_displaysLocalizedErrorViewAndStopsLoading() {
+        let (sut, view) = makeSUT(mapper: { resource in
+            throw anyNSError()
+        })
         
         sut.didFinishLoading(with: anyNSError())
         
@@ -56,7 +58,7 @@ class LoadResourcePresenterTests: XCTestCase {
     private typealias SUT = LoadResourcePresenter<String, ViewSpy>
     
     private func makeSUT(
-        mapper: @escaping (String) -> String = { _ in "any" },
+        mapper: @escaping (String) throws -> String = { _ in "any" },
         file: StaticString = #filePath,
         line: UInt = #line
     ) -> (sut: SUT, view: ViewSpy) {
