@@ -308,9 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				E493B39D2917C7DE00A73DF4 /* UIView+Shimmering.swift */,
-				E43F448C291BAB100003D691 /* UITableView+Dequeueing.swift */,
 				E43F448E291BAC0B0003D691 /* UIImageView+Animations.swift */,
-				E4F920F12988F48300CCEBE7 /* UITableView+HeaderSizing.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -429,7 +427,6 @@
 			children = (
 				E40613AD297F17890047F2EA /* Helpers */,
 				E4BAB7AA2911A0A4006E9772 /* FeedImageCell.swift */,
-				E40613AE297F18160047F2EA /* ErrorView.swift */,
 				E43F448A291B9FC10003D691 /* Feed.storyboard */,
 			);
 			path = Views;
@@ -438,7 +435,6 @@
 		E43F44742918F67E0003D691 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E4BAB7A8291170B0006E9772 /* ListViewController.swift */,
 				E43F447C291995B70003D691 /* FeedImageCellController.swift */,
 			);
 			path = Controllers;
@@ -677,9 +673,45 @@
 			path = "Image Comments Presentation";
 			sourceTree = "<group>";
 		};
+		E4B923CC299030D500AC8B90 /* Shared UI */ = {
+			isa = PBXGroup;
+			children = (
+				E4B923CD299030DD00AC8B90 /* Controllers */,
+				E4B923CE299030E900AC8B90 /* Views */,
+			);
+			path = "Shared UI";
+			sourceTree = "<group>";
+		};
+		E4B923CD299030DD00AC8B90 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E4BAB7A8291170B0006E9772 /* ListViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E4B923CE299030E900AC8B90 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E4B923CF299030F100AC8B90 /* Helpers */,
+				E40613AE297F18160047F2EA /* ErrorView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E4B923CF299030F100AC8B90 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E43F448C291BAB100003D691 /* UITableView+Dequeueing.swift */,
+				E4F920F12988F48300CCEBE7 /* UITableView+HeaderSizing.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		E4BAB78929110353006E9772 /* EssentialFeediOS */ = {
 			isa = PBXGroup;
 			children = (
+				E4B923CC299030D500AC8B90 /* Shared UI */,
 				E43F44722918F66B0003D691 /* Feed UI */,
 			);
 			path = EssentialFeediOS;
