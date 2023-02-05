@@ -1,17 +1,17 @@
 //
-//  FeedPresenter.swift
+//  ImageCommentsPresenter.swift
 //  EssentialFeed
 //
-//  Created by Zeljko Lucic on 23.1.23..
+//  Created by Zeljko Lucic on 5.2.23..
 //
 
 import Foundation
 
-public final class FeedPresenter {
+public final class ImageCommentsPresenter {
     public static var title: String {
         return NSLocalizedString(
-            "FEED_VIEW_TITLE",
-            tableName: "Feed",
+            "IMAGE_COMMENTS_VIEW_TITLE",
+            tableName: "ImageComments",
             bundle: Bundle(for: Self.self),
             comment: "Title fir the feed view")
     }
