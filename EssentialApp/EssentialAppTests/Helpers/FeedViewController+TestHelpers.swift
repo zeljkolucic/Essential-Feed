@@ -44,7 +44,7 @@ extension ListViewController {
     }
     
     func simulateTapOnErrorMessage() {
-        errorView.button.simulateTap()
+        errorView.simulateTap()
     }
     
     var isShowingLoadingIndicator: Bool {
