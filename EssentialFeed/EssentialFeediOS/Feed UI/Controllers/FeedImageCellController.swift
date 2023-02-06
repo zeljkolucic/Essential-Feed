@@ -24,11 +24,9 @@ public final class FeedImageCellController: NSObject {
         self.viewModel = viewModel
         self.delegate = delegate
     }
-    
-    
 }
 
-extension FeedImageCellController: CellController {
+extension FeedImageCellController: UITableViewDataSource, UITableViewDelegate, UITableViewDataSourcePrefetching {
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1
     }
