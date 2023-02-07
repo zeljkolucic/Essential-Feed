@@ -33,6 +33,7 @@ extension CellController: Equatable {
         lhs.id == rhs.id
     }
 }
+
 extension CellController: Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
