@@ -13,6 +13,20 @@ extension ListViewController {
         refreshControl?.simulatePullToRefresh()
     }
     
+    func simulateTapOnErrorMessage() {
+        errorView.simulateTap()
+    }
+    
+    var isShowingLoadingIndicator: Bool {
+        return refreshControl?.isRefreshing == true
+    }
+    
+    var errorMessage: String? {
+        return errorView.message
+    }
+}
+
+extension ListViewController {
     @discardableResult
     func simulateFeedImageViewVisible(at index: Int) -> FeedImageCell? {
         return feedImageView(at: index) as? FeedImageCell
@@ -53,15 +67,6 @@ extension ListViewController {
         let indexPath = IndexPath(row: row, section: feedImagesSection)
         dataSource?.tableView?(tableView, cancelPrefetchingForRowsAt: [indexPath])
     }
-    
-    func simulateTapOnErrorMessage() {
-        errorView.simulateTap()
-    }
-    
-    var isShowingLoadingIndicator: Bool {
-        return refreshControl?.isRefreshing == true
-    }
-    
     func numberOfRenderedFeedImageViews() -> Int {
         tableView.numberOfSections == 0 ? 0 : tableView.numberOfRows(inSection: feedImagesSection)
     }
@@ -79,11 +84,38 @@ extension ListViewController {
         return simulateFeedImageViewVisible(at: index)?.renderedImage
     }
     
-    var errorMessage: String? {
-        return errorView.message
-    }
-    
     private var feedImagesSection: Int {
         return 0
+    }
+}
+
+extension ListViewController {
+    func numberOfRenderedComments() -> Int {
+        tableView.numberOfSections == 0 ? 0 : tableView.numberOfRows(inSection: commentsSection)
+    }
+    
+    private var commentsSection: Int {
+        return 0
+    }
+    
+    func commentMessage(at row: Int) -> String? {
+        commentView(at: row)?.messageLabel.text
+    }
+    
+    func commentDate(at row: Int) -> String? {
+        commentView(at: row)?.dateLabel.text
+    }
+    
+    func commentUsername(at row: Int) -> String? {
+        commentView(at: row)?.usernameLabel.text
+    }
+    
+    private func commentView(at row: Int) -> ImageCommentCell? {
+        guard numberOfRenderedComments() > row else {
+            return nil
+        }
+        let dataSource = tableView.dataSource
+        let indexPath = IndexPath(row: row, section: commentsSection)
+        return dataSource?.tableView(tableView, cellForRowAt: indexPath) as? ImageCommentCell
     }
 }
