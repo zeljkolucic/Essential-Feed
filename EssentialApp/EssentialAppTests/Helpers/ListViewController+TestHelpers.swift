@@ -24,6 +24,19 @@ extension ListViewController {
     var errorMessage: String? {
         return errorView.message
     }
+    
+    func numberOfRows(in section: Int) -> Int {
+        tableView.numberOfSections > section ? tableView.numberOfRows(inSection: section) : 0
+    }
+    
+    func cell(row: Int, section: Int) -> UITableViewCell? {
+        guard numberOfRows(in: section) > row else {
+            return nil
+        }
+        let dataSource = tableView.dataSource
+        let index = IndexPath(row: row, section: section)
+        return dataSource?.tableView(tableView, cellForRowAt: index)
+    }
 }
 
 extension ListViewController {
@@ -92,6 +105,18 @@ extension ListViewController {
         let delegate = tableView.delegate
         let indexPath = IndexPath(row: row, section: feedImagesSection)
         delegate?.tableView?(tableView, didSelectRowAt: indexPath)
+    }
+    
+    private var feedLoadMoreSection: Int {
+        return 1
+    }
+    
+    func simulateLoadMoreFeedAction() {
+        guard let view = cell(row: 0, section: feedLoadMoreSection) else { return }
+        
+        let delegate = tableView.delegate
+        let indexPath = IndexPath(row: 0, section: feedLoadMoreSection)
+        delegate?.tableView?(tableView, willDisplay: view, forRowAt: indexPath)
     }
 }
 
