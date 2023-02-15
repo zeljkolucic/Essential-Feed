@@ -67,13 +67,6 @@ extension FeedUIIntegrationTests {
         
         // MARK: - FeedImageDataLoader
         
-        private struct TaskSpy: FeedImageDataLoaderTask {
-            let cancelCallback: () -> Void
-            func cancel() {
-                cancelCallback()
-            }
-        }
-        
         private var imageRequests = [(url: URL, publisher: PassthroughSubject<Data, Error>)]()
         
         var loadedImageURLs: [URL] {
@@ -101,5 +94,3 @@ extension FeedUIIntegrationTests {
     }
     
 }
-
-
