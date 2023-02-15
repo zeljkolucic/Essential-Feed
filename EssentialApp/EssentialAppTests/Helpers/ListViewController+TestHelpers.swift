@@ -80,6 +80,7 @@ extension ListViewController {
         let indexPath = IndexPath(row: row, section: feedImagesSection)
         dataSource?.tableView?(tableView, cancelPrefetchingForRowsAt: [indexPath])
     }
+    
     func numberOfRenderedFeedImageViews() -> Int {
         tableView.numberOfSections == 0 ? 0 : tableView.numberOfRows(inSection: feedImagesSection)
     }
@@ -88,6 +89,7 @@ extension ListViewController {
         guard numberOfRenderedFeedImageViews() > row else {
             return nil
         }
+        
         let dataSource = tableView.dataSource
         let indexPath = IndexPath(row: row, section: feedImagesSection)
         return dataSource?.tableView(tableView, cellForRowAt: indexPath)
